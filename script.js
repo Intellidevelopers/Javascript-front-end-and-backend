@@ -74,17 +74,17 @@ database.ref('posts').on('value', (snapshot) => {
         const post = childSnapshot.val();
         const postItem = document.createElement('div');
 
-        // Display post details
+        // Display post details without "Edit" and "Delete" buttons
         postItem.innerHTML = `
             <h3>${post.title}</h3>
             <p>${post.content}</p>
-            <button onclick="editPost('${childSnapshot.key}')">Edit</button>
-            <button onclick="deletePost('${childSnapshot.key}')">Delete</button>
+            ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image">` : ''}
         `;
 
         postList.appendChild(postItem);
     });
 });
+
 
 function editPost(key) {
     selectedPostKey = key;
