@@ -9,28 +9,24 @@
 <body>
     <div class="dashboard">
         <h1>Admin Dashboard</h1>
-        <button onclick="openCreatePostModal()">Create Post</button>
-        <!-- Display existing posts -->
-        <div id="postList"></div>
-
-        <!-- Create Post Modal -->
-        <div id="createPostModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeCreatePostModal()">&times;</span>
-                <!-- Form for creating a new post -->
-                <form id="createPostForm">
-                    <label for="postTitle">Title:</label>
-                    <input type="text" id="postTitle" required>
-                    <label for="postContent">Content:</label>
-                    <textarea id="postContent" required></textarea>
-                    <button type="button" onclick="createPost()">Create Post</button>
-                </form>
-            </div>
+        <div>
+            <button onclick="showCreatePostForm()">Create Post</button>
+            <button onclick="deletePost()">Delete Post</button>
+        </div>
+        <div id="createPostForm" style="display: none;">
+            <h2>Create Post</h2>
+            <form onsubmit="addPost(); return false;">
+                <label for="postTitle">Title:</label>
+                <input type="text" id="postTitle" required>
+                <label for="postContent">Content:</label>
+                <textarea id="postContent" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="postList">
+            <!-- Post list will be displayed here -->
         </div>
     </div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
