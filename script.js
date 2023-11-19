@@ -45,24 +45,23 @@ function displayPosts() {
     postListDiv.innerHTML = '';
 
     // Fetch posts from the database
-    database.ref('posts').on('value', (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-            const post = childSnapshot.val();
-            const postId = childSnapshot.key;
+    database.ref('posts').on('child_added', (snapshot) => {
+        const post = snapshot.val();
+        const postId = snapshot.key;
 
-            // Create post HTML element
-            const postElement = document.createElement('div');
-            postElement.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.content}</p>
-                <button onclick="deletePost('${postId}')">Delete Post</button>
-            `;
+        // Create post HTML element
+        const postElement = document.createElement('div');
+        postElement.innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <button onclick="deletePost('${postId}')">Delete Post</button>
+        `;
 
-            // Append post to the postListDiv
-            postListDiv.appendChild(postElement);
-        });
+        // Append post to the postListDiv
+        postListDiv.appendChild(postElement);
     });
 }
+
 
 // Display posts on page load
 displayPosts();
