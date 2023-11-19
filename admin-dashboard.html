@@ -1,53 +1,27 @@
-<!-- Include Firebase SDK (as mentioned above) -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Admin Dashboard</title>
 </head>
 <body>
     <div class="dashboard">
-        <h1>Admin Dashboard</h1>
-        <div>
-            <button onclick="showCreatePostForm()">Create Post</button>
-            <button onclick="deletePost()">Delete Post</button>
-        </div>
-        <div id="createPostForm" style="display: none;">
-            <h2>Create Post</h2>
-            <form onsubmit="addPost(); return false;">
-                <label for="postTitle">Title:</label>
-                <input type="text" id="postTitle" required>
-                <label for="postContent">Content:</label>
-                <textarea id="postContent" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <h2>Admin Dashboard</h2>
+        <form id="postForm">
+            <label for="postTitle">Post Title:</label>
+            <input type="text" id="postTitle" required>
+            <label for="postContent">Post Content:</label>
+            <textarea id="postContent" required></textarea>
+            <button type="button" onclick="createPost()">Create Post</button>
+        </form>
         <div id="postList">
-            <!-- Post list will be displayed here -->
+            <!-- Display posts here -->
         </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="script.js"></script>
 </body>
-    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js"></script>
-<script>
-    // Initialize Firebase
-    const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_STORAGE_BUCKET",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
-    // Get a reference to the database service
-    const database = firebase.database();
-</script>
-
 </html>
