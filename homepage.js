@@ -1,16 +1,20 @@
-// Include Firebase SDK (as mentioned above)
+const postForm = document.getElementById('postForm');
 
-const postList = document.getElementById('postList');
+function createPost() {
+    const postTitle = document.getElementById('postTitle').value;
+    const postContent = document.getElementById('postContent').value;
 
-// Listen for changes in the Firebase database
-database.ref('posts').on('child_added', (snapshot) => {
-    const post = snapshot.val();
-    const postItem = document.createElement('div');
-    postItem.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-    postList.appendChild(postItem);
-});
+    // Get a reference to the database
+    const database = firebase.database();
 
-// (Optional) Add logic for updating posts when deleted
-database.ref('posts').on('child_removed', (snapshot) => {
-    // Implement logic to remove the deleted post from the postList
-});
+    // Push a new post to the database
+    const newPostRef = database.ref('posts').push({
+        title: postTitle,
+        content: postContent
+    });
+
+    // Clear the form after creating the post
+    postForm.reset();
+
+    alert('Post created successfully!');
+}
