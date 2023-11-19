@@ -9,11 +9,13 @@
 <body>
     <div class="dashboard">
         <h2>Admin Dashboard</h2>
-        <form id="postForm">
+        <form id="postForm" enctype="multipart/form-data">
             <label for="postTitle">Post Title:</label>
             <input type="text" id="postTitle" required>
             <label for="postContent">Post Content:</label>
             <textarea id="postContent" required></textarea>
+            <label for="postImage">Upload Image:</label>
+            <input type="file" id="postImage">
             <button type="button" onclick="createPost()">Create Post</button>
         </form>
         <div id="postList">
@@ -22,6 +24,7 @@
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
