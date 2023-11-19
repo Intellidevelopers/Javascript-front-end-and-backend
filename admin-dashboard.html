@@ -1,9 +1,11 @@
+<!-- Include Firebase SDK (as mentioned above) -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Admin Dashboard</title>
 </head>
 <body>
@@ -29,4 +31,23 @@
     </div>
     <script src="script.js"></script>
 </body>
+    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js"></script>
+<script>
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the database service
+    const database = firebase.database();
+</script>
+
 </html>
