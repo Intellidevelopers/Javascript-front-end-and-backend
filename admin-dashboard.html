@@ -23,5 +23,39 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Additional script for update and delete functions
+
+        function updatePost(postId, updatedTitle, updatedContent) {
+            // Update post in Firebase database
+            database.ref('posts').child(postId).update({
+                title: updatedTitle,
+                content: updatedContent
+            });
+        }
+
+        function deletePost(postId) {
+            // Delete post from Firebase database
+            database.ref('posts').child(postId).remove();
+        }
+
+        // Listen for changes in the Firebase database
+        database.ref('posts').on('child_added', (snapshot) => {
+            const post = snapshot.val();
+            const postItem = document.createElement('div');
+            postItem.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <button onclick="updatePost('${snapshot.key}', 'Updated Title', 'Updated Content')">Update</button>
+                <button onclick="deletePost('${snapshot.key}')">Delete</button>
+            `;
+            document.getElementById('postList').appendChild(postItem);
+        });
+
+        // (Optional) Add logic for updating posts when deleted
+        database.ref('posts').on('child_removed', (snapshot) => {
+            // Implement logic to remove the deleted post from the postList
+        });
+    </script>
 </body>
 </html>
