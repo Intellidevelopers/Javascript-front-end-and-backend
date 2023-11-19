@@ -9,15 +9,16 @@ function addPost() {
     const title = document.getElementById('postTitle').value;
     const content = document.getElementById('postContent').value;
 
-    // Validate and add the post to the postList div
+    // Validate and add the post to local storage
     if (title && content) {
-        const postItem = document.createElement('div');
-        postItem.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
-        postList.appendChild(postItem);
+        savePost(title, content);
 
         // Clear the form
         document.getElementById('postTitle').value = '';
         document.getElementById('postContent').value = '';
+
+        // Update the homepage with the new post
+        displayPostsOnHomepage();
 
         // Hide the form after submission
         createPostForm.style.display = 'none';
