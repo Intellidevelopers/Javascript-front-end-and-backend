@@ -7,19 +7,26 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
-    <div class="admin-container">
-        <h1>Admin Dashboard</h1>
+    <div class="dashboard">
+        <h2>Admin Dashboard</h2>
         <form id="postForm">
             <label for="postTitle">Post Title:</label>
             <input type="text" id="postTitle" required>
             <label for="postContent">Post Content:</label>
             <textarea id="postContent" required></textarea>
+            <label for="imageInput">Choose Image:</label>
+            <input type="file" id="imageInput">
+            <img id="imagePreview" alt="Image Preview" style="max-width: 100%; margin-top: 10px;">
             <button type="button" onclick="createPost()">Create Post</button>
+            <button type="button" onclick="updatePost()">Update Post</button>
         </form>
+        <div id="postList">
+            <!-- Display posts here -->
+        </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="homepage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="scripjs"></script>
 </body>
 </html>
