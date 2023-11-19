@@ -20,6 +20,8 @@ const imagePreview = document.getElementById('imagePreview');
 let selectedPostKey = null;
 
 function createPost() {
+    nsole.log('Creating post...');
+    // Your existing code
     const postTitle = document.getElementById('postTitle').value;
     const postContent = document.getElementById('postContent').value;
     const imageFile = imageInput.files[0];
