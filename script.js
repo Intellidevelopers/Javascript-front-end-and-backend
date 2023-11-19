@@ -49,32 +49,6 @@ function createPost() {
     }
 }
 
-// Function to display posts
-function displayPosts() {
-    const postListDiv = document.getElementById('postList');
-
-    // Clear previous posts
-    postListDiv.innerHTML = '';
-
-    // Fetch posts from the database
-    database.ref('posts').on('child_added', (snapshot) => {
-        const post = snapshot.val();
-        const postId = snapshot.key;
-
-        // Create post HTML element
-        const postElement = document.createElement('div');
-        postElement.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>${post.content}</p>
-            <button onclick="deletePost('${postId}')">Delete Post</button>
-        `;
-
-        // Append post to the postListDiv
-        postListDiv.appendChild(postElement);
-    });
-}
-
-
 function updatePost() {
     if (selectedPostKey) {
         const postTitle = document.getElementById('postTitle').value;
