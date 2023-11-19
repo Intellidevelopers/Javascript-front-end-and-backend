@@ -9,14 +9,16 @@
 <body>
     <div class="dashboard">
         <h2>Admin Dashboard</h2>
-        <form id="postForm" enctype="multipart/form-data">
+        <form id="postForm">
             <label for="postTitle">Post Title:</label>
             <input type="text" id="postTitle" required>
             <label for="postContent">Post Content:</label>
             <textarea id="postContent" required></textarea>
-            <label for="postImage">Upload Image:</label>
-            <input type="file" id="postImage">
+            <label for="imageInput">Choose Image:</label>
+            <input type="file" id="imageInput">
+            <img id="imagePreview" alt="Image Preview" style="max-width: 100%; margin-top: 10px;">
             <button type="button" onclick="createPost()">Create Post</button>
+            <button type="button" onclick="updatePost()">Update Post</button>
         </form>
         <div id="postList">
             <!-- Display posts here -->
