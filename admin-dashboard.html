@@ -8,25 +8,29 @@
 </head>
 <body>
     <div class="dashboard">
-        <h2>Admin Dashboard</h2>
-        <form id="postForm">
-            <label for="postTitle">Post Title:</label>
-            <input type="text" id="postTitle" required>
-            <label for="postContent">Post Content:</label>
-            <textarea id="postContent" required></textarea>
-            <label for="imageInput">Choose Image:</label>
-            <input type="file" id="imageInput">
-            <img id="imagePreview" alt="Image Preview" style="max-width: 100%; margin-top: 10px;">
-            <button type="button" onclick="createPost()">Create Post</button>
-            <button type="button" onclick="updatePost()">Update Post</button>
-        </form>
-        <div id="postList">
-            <!-- Display posts here -->
+        <h1>Admin Dashboard</h1>
+        <button onclick="openCreatePostModal()">Create Post</button>
+        <!-- Display existing posts -->
+        <div id="postList"></div>
+
+        <!-- Create Post Modal -->
+        <div id="createPostModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeCreatePostModal()">&times;</span>
+                <!-- Form for creating a new post -->
+                <form id="createPostForm">
+                    <label for="postTitle">Title:</label>
+                    <input type="text" id="postTitle" required>
+                    <label for="postContent">Content:</label>
+                    <textarea id="postContent" required></textarea>
+                    <button type="button" onclick="createPost()">Create Post</button>
+                </form>
+            </div>
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
