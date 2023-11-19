@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Admin Dashboard</h1>
+        <div>
+            <button onclick="showCreatePostForm()">Create Post</button>
+            <button onclick="deletePost()">Delete Post</button>
+        </div>
+        <div id="createPostForm" style="display: none;">
+            <h2>Create Post</h2>
+            <form onsubmit="addPost(); return false;">
+                <label for="postTitle">Title:</label>
+                <input type="text" id="postTitle" required>
+                <label for="postContent">Content:</label>
+                <textarea id="postContent" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="postList">
+            <!-- Post list will be displayed here -->
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
