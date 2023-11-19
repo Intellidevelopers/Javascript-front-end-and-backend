@@ -1,31 +1,25 @@
-const postList = document.getElementById('postList');
-const createPostForm = document.getElementById('createPostForm');
-
-function showCreatePostForm() {
-    createPostForm.style.display = 'block';
+// Function to save a post to local storage
+function savePost(title, content) {
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    posts.push({ title, content });
+    localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-function addPost() {
-    const title = document.getElementById('postTitle').value;
-    const content = document.getElementById('postContent').value;
+// Function to display posts from local storage on the homepage
+function displayPostsOnHomepage() {
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    const postList = document.getElementById('postList');
 
-    // Validate and add the post to local storage
-    if (title && content) {
-        savePost(title, content);
+    // Clear previous content
+    postList.innerHTML = '';
 
-        // Clear the form
-        document.getElementById('postTitle').value = '';
-        document.getElementById('postContent').value = '';
-
-        // Update the homepage with the new post
-        displayPostsOnHomepage();
-
-        // Hide the form after submission
-        createPostForm.style.display = 'none';
-    }
+    // Display each post
+    posts.forEach(post => {
+        const postItem = document.createElement('div');
+        postItem.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+        postList.appendChild(postItem);
+    });
 }
 
-function deletePost() {
-    // Implement post deletion logic as needed
-    // You can use postList.removeChild() or other methods
-}
+// Call the function to display posts on page load
+displayPostsOnHomepage();
