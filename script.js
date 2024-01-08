@@ -78,8 +78,7 @@ database.ref('posts').on('value', (snapshot) => {
         postItem.innerHTML = `
             <h3>${post.title}</h3>
             <p>${post.content}</p>
-            <button onclick="editPost('${childSnapshot.key}')">Edit</button>
-            <button onclick="deletePost('${childSnapshot.key}')">Delete</button>
+            
         `;
 
         postList.appendChild(postItem);
